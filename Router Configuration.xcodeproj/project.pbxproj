@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF6400031F1ED2C200F5CF25 /* Router_ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6400021F1ED2C200F5CF25 /* Router_ConfigurationTests.swift */; };
 		AF64000E1F1ED2C300F5CF25 /* Router_ConfigurationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64000D1F1ED2C300F5CF25 /* Router_ConfigurationUITests.swift */; };
+		AF64001C1F1ED2F900F5CF25 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64001B1F1ED2F900F5CF25 /* Connection.swift */; };
 		AF64FFEE1F1ED2C200F5CF25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64FFED1F1ED2C200F5CF25 /* AppDelegate.swift */; };
 		AF64FFF01F1ED2C200F5CF25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64FFEF1F1ED2C200F5CF25 /* ViewController.swift */; };
 		AF64FFF31F1ED2C200F5CF25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF64FFF11F1ED2C200F5CF25 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		AF6400091F1ED2C300F5CF25 /* Router ConfigurationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Router ConfigurationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF64000D1F1ED2C300F5CF25 /* Router_ConfigurationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router_ConfigurationUITests.swift; sourceTree = "<group>"; };
 		AF64000F1F1ED2C300F5CF25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF64001B1F1ED2F900F5CF25 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		AF64FFEA1F1ED2C200F5CF25 /* Router Configuration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Router Configuration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF64FFED1F1ED2C200F5CF25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF64FFEF1F1ED2C200F5CF25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				AF64FFED1F1ED2C200F5CF25 /* AppDelegate.swift */,
 				AF64FFEF1F1ED2C200F5CF25 /* ViewController.swift */,
+				AF64001B1F1ED2F900F5CF25 /* Connection.swift */,
 				AF64FFF11F1ED2C200F5CF25 /* Main.storyboard */,
 				AF64FFF41F1ED2C200F5CF25 /* Assets.xcassets */,
 				AF64FFF61F1ED2C200F5CF25 /* LaunchScreen.storyboard */,
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF64FFF01F1ED2C200F5CF25 /* ViewController.swift in Sources */,
+				AF64001C1F1ED2F900F5CF25 /* Connection.swift in Sources */,
 				AF64FFEE1F1ED2C200F5CF25 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

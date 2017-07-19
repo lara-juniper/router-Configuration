@@ -5,6 +5,22 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AF64FFE91F1ED2C200F5CF25"
+               BuildableName = "Router Configuration.app"
+               BlueprintName = "Router Configuration"
+               ReferencedContainer = "container:Router Configuration.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -12,7 +28,36 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AF64FFFD1F1ED2C200F5CF25"
+               BuildableName = "Router ConfigurationTests.xctest"
+               BlueprintName = "Router ConfigurationTests"
+               ReferencedContainer = "container:Router Configuration.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AF6400081F1ED2C300F5CF25"
+               BuildableName = "Router ConfigurationUITests.xctest"
+               BlueprintName = "Router ConfigurationUITests"
+               ReferencedContainer = "container:Router Configuration.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AF64FFE91F1ED2C200F5CF25"
+            BuildableName = "Router Configuration.app"
+            BlueprintName = "Router Configuration"
+            ReferencedContainer = "container:Router Configuration.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -26,6 +71,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AF64FFE91F1ED2C200F5CF25"
+            BuildableName = "Router Configuration.app"
+            BlueprintName = "Router Configuration"
+            ReferencedContainer = "container:Router Configuration.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -35,6 +90,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AF64FFE91F1ED2C200F5CF25"
+            BuildableName = "Router Configuration.app"
+            BlueprintName = "Router Configuration"
+            ReferencedContainer = "container:Router Configuration.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
