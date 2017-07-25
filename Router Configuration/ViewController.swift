@@ -20,8 +20,12 @@ class ViewController: UIViewController, dataDelegate {
         //secure text entry
         usernameTextField.clearsOnInsertion = true
         passwordTextField.clearsOnInsertion = true
-        usernameTextField.isSecureTextEntry = true
+        usernameTextField.isSecureTextEntry = false
         passwordTextField.isSecureTextEntry = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "Enter Login Credentials"
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,8 +59,14 @@ class ViewController: UIViewController, dataDelegate {
     
     //Process Strings coming from Python --> iPad
     
+    var firstTime:Bool = true
     func processInputString(str: String) {
-        
+        let strVec = str.components(separatedBy: "\n")
+        if (strVec[0] == "loggedIn") && (firstTime) {
+            performSegue(withIdentifier: "GoToSelectAction", sender: nil)
+            firstTime = false
+            
+        }
     }
     
     //send message iPad --> Python
@@ -70,5 +80,7 @@ class ViewController: UIViewController, dataDelegate {
             print("Error: no space available for writing")
         }
     }
+    
+
 }
 

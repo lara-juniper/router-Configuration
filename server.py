@@ -41,6 +41,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 HOST = '172.24.83.118'
 PORT = 80
 MAX = 1024
+routersToConfigure = []
 
 #Define functions
 def printing():
@@ -135,6 +136,7 @@ def recv_all(sock):
         recvBuffer = text
    elif text[-1] == '\n':
         data = recvBuffer + text[0:len(text)-1]
+        recvBuffer = ''
    else:
         recvBuffer += text
 
@@ -145,24 +147,55 @@ def processReceivedString(socket,data):
     if data == "ls":
         ls = subprocess.check_output(["ls"])
 
-
-if __name__ == "__main__":
-
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.bind((HOST, PORT))
-    s.listen(1)
-    print 'Listening at', s.getsockname()
-    sc, sockname = s.accept()
+def passwordView(socket):
+    sc, sockname = socket.accept()
     print 'We have accepted a connection from', sockname
     print 'Socket connects', sc.getsockname(), 'and', sc.getpeername()
     username = recv_all(sc)
     print 'The incoming message says', repr(username)
     password = recv_all(sc)
     print 'The incoming message says', repr(password)
-    #do something with username and password
-    s.sendall("loggedIn\n")
+    #do something with username and password, including error handling
+    sc.sendall("loggedIn\n")
     sc.close()
     print 'Reply sent, socket closed'
+
+def selectJunosVersion(socket):
+    sc, sockname = socket.accept()
+    print 'We have accepted a connection from', sockname
+    print 'Socket connects', sc.getsockname(), 'and', sc.getpeername()
+    routerList = recv_all(sc)
+    global routersToConfigure
+    routersToConfigure = routerList.split("\n")
+    print routersToConfigure
+
+    path = "/Users/larao/Documents/routerConfiguration/junos"
+    os.chdir(path)
+    ls = subprocess.check_output(["ls"])
+    print ls
+
+    sc.sendall(ls)
+
+    sc.close()
+    print 'Reply sent, socket closed'
+
+
+
+
+if __name__ == "__main__":
+    
+    #Initialize socket
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    s.bind((HOST, PORT))
+    s.listen(1)
+    print 'Listening at', s.getsockname()
+
+    #get username and passowrd from user when the app loads
+    passwordView(s)
+
+    selectJunosVersion(s)
+
+
 
 
     '''

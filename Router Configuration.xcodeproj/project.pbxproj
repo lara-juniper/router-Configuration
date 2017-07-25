@@ -10,11 +10,16 @@
 		AF6400031F1ED2C200F5CF25 /* Router_ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6400021F1ED2C200F5CF25 /* Router_ConfigurationTests.swift */; };
 		AF64000E1F1ED2C300F5CF25 /* Router_ConfigurationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64000D1F1ED2C300F5CF25 /* Router_ConfigurationUITests.swift */; };
 		AF64001C1F1ED2F900F5CF25 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64001B1F1ED2F900F5CF25 /* Connection.swift */; };
+		AF64001E1F1FCA1A00F5CF25 /* SelectActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64001D1F1FCA1A00F5CF25 /* SelectActionViewController.swift */; };
 		AF64FFEE1F1ED2C200F5CF25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64FFED1F1ED2C200F5CF25 /* AppDelegate.swift */; };
 		AF64FFF01F1ED2C200F5CF25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64FFEF1F1ED2C200F5CF25 /* ViewController.swift */; };
 		AF64FFF31F1ED2C200F5CF25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF64FFF11F1ED2C200F5CF25 /* Main.storyboard */; };
 		AF64FFF51F1ED2C200F5CF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF64FFF41F1ED2C200F5CF25 /* Assets.xcassets */; };
 		AF64FFF81F1ED2C200F5CF25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF64FFF61F1ED2C200F5CF25 /* LaunchScreen.storyboard */; };
+		AF9408C41F200352005775F6 /* LabSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9408C31F200352005775F6 /* LabSelectViewController.swift */; };
+		AF9408C61F20213D005775F6 /* SelectRoutersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9408C51F20213D005775F6 /* SelectRoutersViewController.swift */; };
+		AF9408C81F2186BB005775F6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9408C71F2186BB005775F6 /* Router.swift */; };
+		AF9408CA1F27BAE2005775F6 /* SelectJunosFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9408C91F27BAE2005775F6 /* SelectJunosFileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +46,7 @@
 		AF64000D1F1ED2C300F5CF25 /* Router_ConfigurationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router_ConfigurationUITests.swift; sourceTree = "<group>"; };
 		AF64000F1F1ED2C300F5CF25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF64001B1F1ED2F900F5CF25 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		AF64001D1F1FCA1A00F5CF25 /* SelectActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectActionViewController.swift; sourceTree = "<group>"; };
 		AF64FFEA1F1ED2C200F5CF25 /* Router Configuration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Router Configuration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF64FFED1F1ED2C200F5CF25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF64FFEF1F1ED2C200F5CF25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +55,10 @@
 		AF64FFF71F1ED2C200F5CF25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF64FFF91F1ED2C200F5CF25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF64FFFE1F1ED2C200F5CF25 /* Router ConfigurationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Router ConfigurationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF9408C31F200352005775F6 /* LabSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabSelectViewController.swift; sourceTree = "<group>"; };
+		AF9408C51F20213D005775F6 /* SelectRoutersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRoutersViewController.swift; sourceTree = "<group>"; };
+		AF9408C71F2186BB005775F6 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		AF9408C91F27BAE2005775F6 /* SelectJunosFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectJunosFileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +131,11 @@
 				AF64FFEF1F1ED2C200F5CF25 /* ViewController.swift */,
 				AF64001B1F1ED2F900F5CF25 /* Connection.swift */,
 				AF64FFF11F1ED2C200F5CF25 /* Main.storyboard */,
+				AF9408C91F27BAE2005775F6 /* SelectJunosFileViewController.swift */,
+				AF9408C51F20213D005775F6 /* SelectRoutersViewController.swift */,
+				AF9408C71F2186BB005775F6 /* Router.swift */,
+				AF9408C31F200352005775F6 /* LabSelectViewController.swift */,
+				AF64001D1F1FCA1A00F5CF25 /* SelectActionViewController.swift */,
 				AF64FFF41F1ED2C200F5CF25 /* Assets.xcassets */,
 				AF64FFF61F1ED2C200F5CF25 /* LaunchScreen.storyboard */,
 				AF64FFF91F1ED2C200F5CF25 /* Info.plist */,
@@ -201,6 +216,7 @@
 					};
 					AF64FFE91F1ED2C200F5CF25 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = HC73FS5KXW;
 						ProvisioningStyle = Automatic;
 					};
 					AF64FFFD1F1ED2C200F5CF25 = {
@@ -270,8 +286,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF64001E1F1FCA1A00F5CF25 /* SelectActionViewController.swift in Sources */,
 				AF64FFF01F1ED2C200F5CF25 /* ViewController.swift in Sources */,
 				AF64001C1F1ED2F900F5CF25 /* Connection.swift in Sources */,
+				AF9408C81F2186BB005775F6 /* Router.swift in Sources */,
+				AF9408CA1F27BAE2005775F6 /* SelectJunosFileViewController.swift in Sources */,
+				AF9408C61F20213D005775F6 /* SelectRoutersViewController.swift in Sources */,
+				AF9408C41F200352005775F6 /* LabSelectViewController.swift in Sources */,
 				AF64FFEE1F1ED2C200F5CF25 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HC73FS5KXW;
 				INFOPLIST_FILE = "Router Configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.juniper.Router-Configuration";
@@ -430,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HC73FS5KXW;
 				INFOPLIST_FILE = "Router Configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.juniper.Router-Configuration";
@@ -502,6 +525,7 @@
 				AF6400141F1ED2C300F5CF25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF6400151F1ED2C300F5CF25 /* Build configuration list for PBXNativeTarget "Router ConfigurationTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +534,7 @@
 				AF6400171F1ED2C300F5CF25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF6400181F1ED2C300F5CF25 /* Build configuration list for PBXNativeTarget "Router ConfigurationUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +543,7 @@
 				AF64001A1F1ED2C300F5CF25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF64FFE51F1ED2C200F5CF25 /* Build configuration list for PBXProject "Router Configuration" */ = {
 			isa = XCConfigurationList;
