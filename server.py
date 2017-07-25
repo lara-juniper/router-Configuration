@@ -190,10 +190,12 @@ if __name__ == "__main__":
     s.listen(1)
     print 'Listening at', s.getsockname()
 
+    selectJunosVersion(s)
+
     #get username and passowrd from user when the app loads
     passwordView(s)
 
-    selectJunosVersion(s)
+    
 
 
 
