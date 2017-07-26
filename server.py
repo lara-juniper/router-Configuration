@@ -160,14 +160,11 @@ def passwordView(socket):
     sc.close()
     print 'Reply sent, socket closed'
 
-def selectJunosVersion(socket):
+def selectLab(socket):
     sc, sockname = socket.accept()
     print 'We have accepted a connection from', sockname
     print 'Socket connects', sc.getsockname(), 'and', sc.getpeername()
-    routerList = recv_all(sc)
-    global routersToConfigure
-    routersToConfigure = routerList.split("\n")
-    print routersToConfigure
+    check = recv_all(sc)
 
     path = "/Users/larao/Documents/routerConfiguration/junos"
     os.chdir(path)
@@ -190,7 +187,7 @@ if __name__ == "__main__":
     s.listen(1)
     print 'Listening at', s.getsockname()
 
-    selectJunosVersion(s)
+    selectLab(s)
 
     #get username and passowrd from user when the app loads
     passwordView(s)
