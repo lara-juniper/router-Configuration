@@ -37,6 +37,8 @@ class ViewController: UIViewController, dataDelegate {
     
     let connection = Connection() //set up instance of iPad-Python server connection object
     
+    var routerDict = [String:String]()
+    
     //MARK: Outlets
     
     @IBOutlet weak var usernameTextField: UITextField!
@@ -48,6 +50,9 @@ class ViewController: UIViewController, dataDelegate {
     @IBAction func pressEnter(_ sender: Any) {
         sendMessageToPython(str: "\(usernameTextField.text!)\n")
         sendMessageToPython(str: "\(passwordTextField.text!)\n")
+        
+        let dictString = dictToString(dict: routerDict)
+        sendMessageToPython(str: dictString)
     }
     
     //MARK: Functions
@@ -81,6 +86,26 @@ class ViewController: UIViewController, dataDelegate {
         }
     }
     
+    func dictToString(dict: [String: String]) -> String {
+        var str = "{"
+        let components = Array(dict.keys)
+        for i in 0...(dict.count - 2) {
+            str += "'"
+            str += components[i]
+            str += "':'"
+            str += dict[components[i]]!
+            str += "',"
+        }
+        str += "'"
+        str += components[dict.count - 1]
+        str += ":'"
+        str += dict[components[dict.count - 1]]!
+        str += "'"
+
+        str += "}\n"
+        print(str)
+        return str
+    }
 
 }
 

@@ -12,6 +12,7 @@ from lxml import etree
 import getpass
 import socket
 import subprocess
+import ast
 #from termcolor import colored
 
 '''
@@ -156,6 +157,11 @@ def passwordView(socket):
     password = recv_all(sc)
     print 'The incoming message says', repr(password)
     #do something with username and password, including error handling
+    dictString = recv_all(sc)
+    print 'The incoming message says', repr(dictString)
+
+    routerJunosDict = ast.literal_eval(dictString)
+
     sc.sendall("loggedIn\n")
     sc.close()
     print 'Reply sent, socket closed'

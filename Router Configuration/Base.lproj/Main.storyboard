@@ -86,7 +86,6 @@
                     <connections>
                         <outlet property="passwordTextField" destination="mpT-I2-7wm" id="sWf-fB-Cht"/>
                         <outlet property="usernameTextField" destination="buT-je-nyL" id="9to-dz-yYj"/>
-                        <segue destination="Ehk-Gb-VV4" kind="show" identifier="GoToSelectAction" id="uyo-IA-4Tm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -221,23 +220,23 @@
         <scene sceneID="6fp-T5-teg">
             <objects>
                 <tableViewController id="aqf-Zm-wrG" customClass="TableViewController" customModule="Router_Configuration" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="M80-Tn-0ZO">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="M80-Tn-0ZO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickerCell" rowHeight="90" id="ywl-Cm-gh6" customClass="PickerCell" customModule="Router_Configuration" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickerCell" rowHeight="60" id="ywl-Cm-gh6" customClass="PickerCell" customModule="Router_Configuration" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ywl-Cm-gh6" id="e5X-8C-2nV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZU-XW-pLW">
-                                            <rect key="frame" x="48.5" y="8" width="320" height="74"/>
+                                        <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="lZU-XW-pLW">
+                                            <rect key="frame" x="49" y="8" width="246" height="44"/>
                                         </pickerView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhW-2l-YqR">
-                                            <rect key="frame" x="8" y="8" width="32.5" height="74"/>
+                                            <rect key="frame" x="8" y="8" width="32.5" height="44"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -247,7 +246,7 @@
                                         <constraint firstAttribute="bottom" secondItem="uhW-2l-YqR" secondAttribute="bottom" constant="7.5" id="48s-Ug-CZt"/>
                                         <constraint firstItem="lZU-XW-pLW" firstAttribute="top" secondItem="e5X-8C-2nV" secondAttribute="top" constant="8" id="AJr-Kk-mRD"/>
                                         <constraint firstItem="lZU-XW-pLW" firstAttribute="leading" secondItem="uhW-2l-YqR" secondAttribute="trailing" constant="8" id="NmK-uK-sOV"/>
-                                        <constraint firstAttribute="trailing" secondItem="lZU-XW-pLW" secondAttribute="trailing" constant="6.5" id="Xsl-0H-dtU"/>
+                                        <constraint firstAttribute="trailing" secondItem="lZU-XW-pLW" secondAttribute="trailing" constant="80" id="Xsl-0H-dtU"/>
                                         <constraint firstItem="uhW-2l-YqR" firstAttribute="top" secondItem="e5X-8C-2nV" secondAttribute="top" constant="8" id="bfH-zx-gRH"/>
                                         <constraint firstItem="lZU-XW-pLW" firstAttribute="leading" secondItem="uhW-2l-YqR" secondAttribute="trailing" constant="8" id="cuH-b0-TVt"/>
                                         <constraint firstAttribute="bottom" secondItem="lZU-XW-pLW" secondAttribute="bottom" constant="7.5" id="epV-GO-RlM"/>
@@ -265,77 +264,13 @@
                             <outlet property="delegate" destination="aqf-Zm-wrG" id="9Xm-Y0-Z5T"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="Routers2Pwd" id="alZ-ic-19G"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74f-H2-OcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4169" y="-633"/>
-        </scene>
-        <!--Select Routers View Controller-->
-        <scene sceneID="tXA-o1-Df8">
-            <objects>
-                <viewController id="7WT-kq-jkY" customClass="SelectRoutersViewController" customModule="Router_Configuration" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MqV-Vd-Nhy"/>
-                        <viewControllerLayoutGuide type="bottom" id="AVK-co-sDy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jkM-sZ-XHe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1C6-BL-cby">
-                                <rect key="frame" x="16" y="20" width="343" height="639"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="1C6-BL-cby" firstAttribute="leading" secondItem="jkM-sZ-XHe" secondAttribute="leadingMargin" id="4g8-o9-hQd"/>
-                            <constraint firstItem="1C6-BL-cby" firstAttribute="top" secondItem="MqV-Vd-Nhy" secondAttribute="bottom" id="Kub-cQ-akl"/>
-                            <constraint firstItem="AVK-co-sDy" firstAttribute="top" secondItem="1C6-BL-cby" secondAttribute="bottom" constant="8" id="Zk7-M1-xvN"/>
-                            <constraint firstItem="1C6-BL-cby" firstAttribute="trailing" secondItem="jkM-sZ-XHe" secondAttribute="trailingMargin" id="cCR-3u-jD1"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="1C6-BL-cby" id="pmm-go-FNb"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="RoutersToJunosFiles" id="3pg-Vh-Y8r"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fga-9u-swG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4168.8000000000002" y="36.431784107946029"/>
-        </scene>
-        <!--Select Junos File View Controller-->
-        <scene sceneID="AJ4-2d-p4e">
-            <objects>
-                <viewController id="Ehk-Gb-VV4" customClass="SelectJunosFileViewController" customModule="Router_Configuration" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ObK-WG-9iJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="s7F-4N-2k6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uan-vu-uvc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U3M-iJ-n1W">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="s7F-4N-2k6" firstAttribute="top" secondItem="U3M-iJ-n1W" secondAttribute="bottom" id="OFb-Th-cNN"/>
-                            <constraint firstItem="U3M-iJ-n1W" firstAttribute="leading" secondItem="uan-vu-uvc" secondAttribute="leadingMargin" id="YFd-UM-teL"/>
-                            <constraint firstItem="U3M-iJ-n1W" firstAttribute="trailing" secondItem="uan-vu-uvc" secondAttribute="trailingMargin" id="aPi-z4-yZ4"/>
-                            <constraint firstItem="U3M-iJ-n1W" firstAttribute="top" secondItem="uan-vu-uvc" secondAttribute="topMargin" constant="64" id="r6M-di-AMK"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="U3M-iJ-n1W" id="ClV-XO-qu2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WNA-dh-cNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5615.1999999999998" y="36.431784107946029"/>
+            <point key="canvasLocation" x="4191" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ath-qu-7Ez">

@@ -41,7 +41,7 @@ class LabSelectViewController: UIViewController, dataDelegate {
     
     //MARK: Actions
     @IBAction func lab1ButtonClick(_ sender: Any) {
-        sendMessageToPython(str: "check")
+        sendMessageToPython(str: "check\n")
     }
     
     
@@ -57,7 +57,9 @@ class LabSelectViewController: UIViewController, dataDelegate {
     func processInputString(str: String) {
         let files = str.components(separatedBy: "\n")
         for file in files {
-            junosFiles.append(file)
+            if file != ".DS_Store" {
+                junosFiles.append(file)
+            }
         }
         if firstTime == true {
             performSegue(withIdentifier: "Lab2Routers", sender: nil)
