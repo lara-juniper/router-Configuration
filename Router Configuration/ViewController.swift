@@ -22,6 +22,15 @@ class ViewController: UIViewController, dataDelegate {
         passwordTextField.clearsOnInsertion = true
         usernameTextField.isSecureTextEntry = false
         passwordTextField.isSecureTextEntry = true
+        
+        var notConnected = true
+        while notConnected {
+            if connection.outputStream.hasSpaceAvailable {
+                sendMessageToPython(str: "nav:login\n")
+                notConnected = false
+            }
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,8 +77,8 @@ class ViewController: UIViewController, dataDelegate {
     func processInputString(str: String) {
         let strVec = str.components(separatedBy: "\n")
         if (strVec[0] == "loggedIn") && (firstTime) {
-            performSegue(withIdentifier: "GoToSelectAction", sender: nil)
             firstTime = false
+            performSegue(withIdentifier: "LastSegue", sender: nil)
             
         }
     }
@@ -89,16 +98,18 @@ class ViewController: UIViewController, dataDelegate {
     func dictToString(dict: [String: String]) -> String {
         var str = "{"
         let components = Array(dict.keys)
-        for i in 0...(dict.count - 2) {
-            str += "'"
-            str += components[i]
-            str += "':'"
-            str += dict[components[i]]!
-            str += "',"
+        if components.count > 1 {
+            for i in 0...(dict.count - 2) {
+                str += "'"
+                str += components[i]
+                str += "':'"
+                str += dict[components[i]]!
+                str += "',"
+            }
         }
         str += "'"
         str += components[dict.count - 1]
-        str += ":'"
+        str += "':'"
         str += dict[components[dict.count - 1]]!
         str += "'"
 
@@ -107,5 +118,14 @@ class ViewController: UIViewController, dataDelegate {
         return str
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "LastSegue") {
+            let secondViewController = segue.destination as! ConfigReportViewController
+            secondViewController.routerDict = routerDict
+            
+        }
+    }
+    
+    
 }
 

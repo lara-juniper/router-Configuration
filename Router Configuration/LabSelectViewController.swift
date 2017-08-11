@@ -19,6 +19,13 @@ class LabSelectViewController: UIViewController, dataDelegate {
         connection.connect()
         connection.sendDelegate = self
         
+        var notConnected = true
+        while notConnected {
+            if connection.outputStream.hasSpaceAvailable {
+                sendMessageToPython(str: "nav:lab\n")
+                notConnected = false
+            }
+        }
         
     }
 

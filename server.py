@@ -39,7 +39,7 @@ os.system('clear')
 #Set up socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-HOST = '172.24.83.118'
+HOST = '127.0.0.1'
 PORT = 80
 MAX = 1024
 routersToConfigure = []
@@ -123,8 +123,8 @@ def upgrade(device, hhh):
         device.close()
         sys.exit(0)
 
-recvBuffer = ''
 
+recvBuffer = ''
 def recv_all(sock):
 
    global recvBuffer
@@ -144,14 +144,11 @@ def recv_all(sock):
    return data
 
 def processReceivedString(socket,data):
-
     if data == "ls":
         ls = subprocess.check_output(["ls"])
 
-def passwordView(socket):
-    sc, sockname = socket.accept()
-    print 'We have accepted a connection from', sockname
-    print 'Socket connects', sc.getsockname(), 'and', sc.getpeername()
+def passwordView(sc):
+
     username = recv_all(sc)
     print 'The incoming message says', repr(username)
     password = recv_all(sc)
@@ -166,10 +163,8 @@ def passwordView(socket):
     sc.close()
     print 'Reply sent, socket closed'
 
-def selectLab(socket):
-    sc, sockname = socket.accept()
-    print 'We have accepted a connection from', sockname
-    print 'Socket connects', sc.getsockname(), 'and', sc.getpeername()
+def selectLab(sc):
+
     check = recv_all(sc)
 
     path = "/Users/larao/Documents/routerConfiguration/junos"
@@ -193,10 +188,21 @@ if __name__ == "__main__":
     s.listen(1)
     print 'Listening at', s.getsockname()
 
-    selectLab(s)
+    while True:
+        sc, sockname = s.accept()
+        print 'We have accepted a connection from', sockname
+        print 'Socket connects', sc.getsockname(), 'and', sc.getpeername()
+        navMessage = recv_all(sc)
+        print 'received message: ' + navMessage
+        arr = navMessage.split(":")
+        if arr[0] == "nav":
+            message = arr[1]
+            print "message: " + message
+            if message == "login" :
+                passwordView(sc)
+            elif message == "lab":
+                selectLab(sc)
 
-    #get username and passowrd from user when the app loads
-    passwordView(s)
 
     
 
