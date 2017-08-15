@@ -61,6 +61,7 @@ class ViewController: UIViewController, dataDelegate {
         sendMessageToPython(str: "\(passwordTextField.text!)\n")
         
         let dictString = dictToString(dict: routerDict)
+        sleep(1)
         sendMessageToPython(str: dictString)
     }
     

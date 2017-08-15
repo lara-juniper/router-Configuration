@@ -1,5 +1,7 @@
 
 # -*- coding: utf-8 -*-
+# !/home/csim/venv/bin/python
+
 
 import argparse
 from multiprocessing.dummy import Pool
@@ -13,81 +15,26 @@ import getpass
 import socket
 import subprocess
 import ast
-#from termcolor import colored
 
-'''
-parser = argparse.ArgumentParser('Upgrades Junos on multiple devices')
-parser.add_argument("-f", help = "File with hosts to upgrade", type = file, required = True)
-parser.add_argument("-j", help = "Junos file", type = file, required = True)
-parser.add_argument("-s", help = "Simultaneous upgrade using multiprocessing", action = "store_true")
-parser.add_argument("--load", help = "Upload Junos to /var/tmp directory", action = "store_true", default=False)
-
-
-args = parser.parse_args()
-
-hostnames =  args.f
-filename = args.f.name
-locp = os.getcwd()
-#package = '/var/tmp/junos-install-mx-x86-64-16.1X75.15.tgz'
-user_n = raw_input('Username: ')
-password = getpass.getpass('Password: ')
-#host = 'wf-r6mx240-csim.englab.juniper.net'
-
-os.system('clear')
-'''
-
-#Set up socket
+# Set up TCP socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-HOST = '127.0.0.1'
-PORT = 80
+HOST = '172.24.92.64'  # Change this to the IP address of your device on the network
+PORT = 8055
 MAX = 1024
-routersToConfigure = []
-
-#Define functions
-def printing():
-    list = []
-    print colored("===========================================================================", 'green')
-    if args.load:
-        print "{} will be uploaded to these routers".format(args.j.name)
-    else:
-        print "Image should be already on all routers in /var/tmp folder"
-    print colored("===========================================================================", 'green')
-    print "\n"
-
-
-    print colored("===========================================================================", 'red')
-    for i in hostnames:
-        print i.strip()
-        list.append(i.strip())
-    print colored("===========================================================================", 'red')
-    print "\n"
-    print colored("===========================================================================", 'green')
-
-    if args.s:
-        pool_num = 10
-        print "All routers will be upgraded simultaneously"
-    else:
-        pool_num = 1
-        print "Routers will be upgraded one by one, no multiprocessing"
-    print colored("===========================================================================", 'green')
-    print "\n"
-    return pool_num, list
-
-
-def parsing_hostnames(hostnames):
-    for line in hostnames:
-        list.append(line.strip())
-        print list
-    return list
+all_routers = {'R1':'10.13.120.188', 'R2': '10.13.121.252', 'R3':'10.13.120.192', 'R4':'10.13.120.182', 'R5': '10.13.120.196', 'R6':'10.13.120.194', 'R7': '10.13.120.172', 'R8': '10.13.120.194', 'R9': '10.13.120.180' }
+username1 = ''
+password1 = ''
+dict_2 = {}
 
 # Connects to the device and returns dev object
 def connect(hostname):
+
     try:
-        dev = Device(host = "{}".format(hostname), user=user_n, passwd=password)
+        dev = Device(host="{}".format(hostname), user=username1, passwd=password1)
         dev.open()
         dev.timeout = 3000
-        print colored("Connected to {}".format(hostname), "blue")
+        print "Connected to {}".format(hostname)
         upgrade(dev, hostname)
     except JE.ConnectAuthError:
         print "Username or password is incorrect"
@@ -105,16 +52,17 @@ def upgrade(device, hhh):
     sw = SW(device)
     try:
         sw._multi_RE = False
-        print colored("Installing a Junos on {}, please wait".format(hhh), "red")
-        ok = sw.install(package= args.j.name, no_copy=True, remote_path='/var/tmp/',progress='update_progress', validate=False)
+        print "Installing a Junos on {}, please wait".format(hhh)
+        ok = sw.install(package=dict_2[hhh], no_copy=True, remote_path='/var/home/JUNOS-RW/', progress='update_progress',
+                        validate=False)
     except Exception as err:
-        print "Can't install software"
+        print "Can't install software on {}".format(hhh)
         print err
         device.close()
         sys.exit(0)
 
     if ok is True:
-        print colored("Rebooting after an upgrade {}".format(hhh), "green")
+        print "Rebooting after an upgrade {}".format(hhh)
         rsp = sw.reboot()
         device.close()
         sys.exit(0)
@@ -124,70 +72,111 @@ def upgrade(device, hhh):
         sys.exit(0)
 
 
+
+# TCP function to receive data (iPad --> Python)
 recvBuffer = ''
+
+
 def recv_all(sock):
+    global recvBuffer
+    data = ''
+    text = sock.recv(MAX)
 
-   global recvBuffer
-   data = ''
-   text = sock.recv(MAX)
-
-   if (text[-1] == '\n') and ( not recvBuffer):
-        data = text[0:len(text)-1]
-   elif not recvBuffer:
+    if (text[-1] == '\n') and (not recvBuffer):
+        data = text[0:len(text) - 1]
+    elif not recvBuffer:
         recvBuffer = text
-   elif text[-1] == '\n':
-        data = recvBuffer + text[0:len(text)-1]
+    elif text[-1] == '\n':
+        data = recvBuffer + text[0:len(text) - 1]
         recvBuffer = ''
-   else:
+    else:
         recvBuffer += text
 
-   return data
+    return data
 
-def processReceivedString(socket,data):
+
+def processReceivedString(socket, data):
     if data == "ls":
         ls = subprocess.check_output(["ls"])
 
-def passwordView(sc):
 
-    username = recv_all(sc)
-    print 'The incoming message says', repr(username)
-    password = recv_all(sc)
-    print 'The incoming message says', repr(password)
-    #do something with username and password, including error handling
+def execute1(dict_swift, user1, password1):
+    list = []
+    dict_2 = {}
+    print dict_swift
+    for lll in dict_swift:
+        list.append(all_routers[lll])
+        dict_2[all_routers[lll]] = dict_swift[lll]
+        print list
+        print dict_2
+    return list, dict_2
+
+
+
+
+# Function that runs when application reaches the "Enter Login Credentials" screen
+def passwordView(sc):
+    # Get Username from iPad
+    global username1
+    username1 = recv_all(sc)
+    print 'The incoming message says', repr(username1)
+
+    # Get Password from iPad
+    global password1
+    password1 = recv_all(sc)
+    print 'The incoming message says', repr(password1)
+
+    # do something with username and password, including error handling
+
+    # Get Router : Config-File dictionary from iPad
     dictString = recv_all(sc)
     print 'The incoming message says', repr(dictString)
 
+    # Turn the string into a dictionary
     routerJunosDict = ast.literal_eval(dictString)
+    global dict_2
+    list, dict_2 = execute1(routerJunosDict, username1, password1)
+    print "Routers to execute:"
+    for d in list:
+        print "Router {} - Junos - {}".format(d, dict_2[d])
+    pool = Pool(8)
+    pool.map(connect, list)
+    pool.close()
+    pool.join()
+    print "All routers are upgraded"
+
 
     sc.sendall("loggedIn\n")
     sc.close()
     print 'Reply sent, socket closed'
 
-def selectLab(sc):
 
+# Function executes when you are on the "Select Lab" screen
+def selectLab(sc):
     check = recv_all(sc)
 
-    path = "/Users/larao/Documents/routerConfiguration/junos"
+    # Navigate to "junos" folder and run ls
+    path = "/Users/dbalyura/Downloads/Junos"
     os.chdir(path)
     ls = subprocess.check_output(["ls"])
     print ls
 
+    # send ls command results to iPad
     sc.sendall(ls)
 
     sc.close()
     print 'Reply sent, socket closed'
 
 
-
-
 if __name__ == "__main__":
-    
-    #Initialize socket
+
+    # Initialize socket
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind((HOST, PORT))
     s.listen(1)
     print 'Listening at', s.getsockname()
 
+    # Script runs on a loop receiving messages indicating which app screen the user selects
     while True:
         sc, sockname = s.accept()
         print 'We have accepted a connection from', sockname
@@ -198,16 +187,10 @@ if __name__ == "__main__":
         if arr[0] == "nav":
             message = arr[1]
             print "message: " + message
-            if message == "login" :
+            if message == "login":
                 passwordView(sc)
             elif message == "lab":
                 selectLab(sc)
-
-
-    
-
-
-
 
     '''
     pool_num, list = printing()
@@ -219,5 +202,4 @@ if __name__ == "__main__":
     print "All routers are upgraded"
 
 '''
-
-
+ 
