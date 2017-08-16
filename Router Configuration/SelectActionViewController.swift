@@ -26,6 +26,10 @@ class SelectActionViewController: UIViewController {
         navigationItem.title = "Select Option"
     }
     
+    @IBAction func upgradeVersionButtonPress(_ sender: Any) {
+        
+        performSegue(withIdentifier: "ActionToTCP", sender: nil)
+    }
     
     
     

@@ -8,10 +8,10 @@
 
 import Foundation
 
+var serverAddress: CFString = "172.24.89.25" as CFString //server address of computer you're connecting to. Must be on same network as iPad
+var serverPort: UInt32 = 8055 //port to which you are connecting on the server computer
+
 class Connection: NSObject, StreamDelegate {
-    
-    let serverAddress: CFString = "172.24.92.64" as CFString //server address of computer you're connecting to. Must be on same network as iPad
-    let serverPort: UInt32 = 8055 //port to which you are connecting on the server computer
     
     var inputStream: InputStream! //read-only stream data object
     var outputStream: OutputStream! //write-only stream data object
@@ -26,7 +26,7 @@ class Connection: NSObject, StreamDelegate {
         var writeStream: Unmanaged<CFWriteStream>?
         
         //Pair iPad app with TCP Server
-        CFStreamCreatePairWithSocketToHost(nil, self.serverAddress, self.serverPort, &readStream, &writeStream)
+        CFStreamCreatePairWithSocketToHost(nil, serverAddress, serverPort, &readStream, &writeStream)
         
         self.inputStream = readStream!.takeRetainedValue()
         self.outputStream = writeStream!.takeRetainedValue()

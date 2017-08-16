@@ -22,6 +22,7 @@
 		AF9408CA1F27BAE2005775F6 /* SelectJunosFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9408C91F27BAE2005775F6 /* SelectJunosFileViewController.swift */; };
 		AFA4EA441F3E0F6B00A1AFF2 /* ConfigReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4EA431F3E0F6B00A1AFF2 /* ConfigReportViewController.swift */; };
 		AFA4EA461F3E16DE00A1AFF2 /* ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4EA451F3E16DE00A1AFF2 /* ConfigCell.swift */; };
+		AFA4EA481F44C26000A1AFF2 /* TCPSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4EA471F44C26000A1AFF2 /* TCPSetupViewController.swift */; };
 		AFEB523C1F29418C00FBAA0C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB523B1F29418C00FBAA0C /* TableViewController.swift */; };
 		AFEB523E1F29419F00FBAA0C /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB523D1F29419F00FBAA0C /* PickerCell.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		AF9408C91F27BAE2005775F6 /* SelectJunosFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectJunosFileViewController.swift; sourceTree = "<group>"; };
 		AFA4EA431F3E0F6B00A1AFF2 /* ConfigReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigReportViewController.swift; sourceTree = "<group>"; };
 		AFA4EA451F3E16DE00A1AFF2 /* ConfigCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigCell.swift; sourceTree = "<group>"; };
+		AFA4EA471F44C26000A1AFF2 /* TCPSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPSetupViewController.swift; sourceTree = "<group>"; };
 		AFEB523B1F29418C00FBAA0C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../../tableTesting2/tableTesting2/TableViewController.swift; sourceTree = "<group>"; };
 		AFEB523D1F29419F00FBAA0C /* PickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerCell.swift; path = ../../tableTesting2/tableTesting2/PickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +140,7 @@
 				AF64FFED1F1ED2C200F5CF25 /* AppDelegate.swift */,
 				AF64FFEF1F1ED2C200F5CF25 /* ViewController.swift */,
 				AF64001B1F1ED2F900F5CF25 /* Connection.swift */,
+				AFA4EA471F44C26000A1AFF2 /* TCPSetupViewController.swift */,
 				AF64FFF11F1ED2C200F5CF25 /* Main.storyboard */,
 				AFA4EA431F3E0F6B00A1AFF2 /* ConfigReportViewController.swift */,
 				AFEB523D1F29419F00FBAA0C /* PickerCell.swift */,
@@ -308,6 +311,7 @@
 				AF9408C41F200352005775F6 /* LabSelectViewController.swift in Sources */,
 				AFEB523C1F29418C00FBAA0C /* TableViewController.swift in Sources */,
 				AFA4EA461F3E16DE00A1AFF2 /* ConfigCell.swift in Sources */,
+				AFA4EA481F44C26000A1AFF2 /* TCPSetupViewController.swift in Sources */,
 				AF64FFEE1F1ED2C200F5CF25 /* AppDelegate.swift in Sources */,
 				AFEB523E1F29419F00FBAA0C /* PickerCell.swift in Sources */,
 			);

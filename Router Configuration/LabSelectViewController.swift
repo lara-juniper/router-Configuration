@@ -13,8 +13,8 @@ class LabSelectViewController: UIViewController, dataDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lab1Button.isEnabled = false
         lab2Button.isEnabled = false
-        lab3Button.isEnabled = false
         
         connection.connect()
         connection.sendDelegate = self
@@ -26,6 +26,10 @@ class LabSelectViewController: UIViewController, dataDelegate {
                 notConnected = false
             }
         }
+        
+        //Delete back button
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
         
     }
 
@@ -48,9 +52,12 @@ class LabSelectViewController: UIViewController, dataDelegate {
     
     //MARK: Actions
     @IBAction func lab1ButtonClick(_ sender: Any) {
-        sendMessageToPython(str: "check\n")
+        
     }
     
+    @IBAction func lab3ButtonClick(_ sender: Any) {
+        sendMessageToPython(str: "check\n")
+    }
     
     //MARK: Data sending functions
     

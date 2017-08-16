@@ -15,17 +15,20 @@ import getpass
 import socket
 import subprocess
 import ast
+import time
+from time import sleep
 
 # Set up TCP socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-HOST = '172.24.92.64'  # Change this to the IP address of your device on the network
+HOST = '172.24.89.25'  # Change this to the IP address of your device on the network
 PORT = 8055
 MAX = 1024
 all_routers = {'R1':'10.13.120.188', 'R2': '10.13.121.252', 'R3':'10.13.120.192', 'R4':'10.13.120.182', 'R5': '10.13.120.196', 'R6':'10.13.120.194', 'R7': '10.13.120.172', 'R8': '10.13.120.194', 'R9': '10.13.120.180' }
 username1 = ''
 password1 = ''
 dict_2 = {}
+sc = ''
 
 # Connects to the device and returns dev object
 def connect(hostname):
@@ -34,16 +37,28 @@ def connect(hostname):
         dev = Device(host="{}".format(hostname), user=username1, passwd=password1)
         dev.open()
         dev.timeout = 3000
-        print "Connected to {}".format(hostname)
+        msg = "Connected to {}".format(hostname)
+        print msg
+        sendMsg = "m:" + msg + "\n"
+        sc.sendall(sendMsg)
         upgrade(dev, hostname)
     except JE.ConnectAuthError:
-        print "Username or password is incorrect"
+        msg = "Username or password is incorrect"
+        print msg
+        sendMsg = "m:" + msg + "\n"
+        sc.sendall(sendMsg)
         sys.exit()
     except Exception as errr:
-        print "{} - Can't connect to the router {}".format(errr, hostname)
+        msg = "{} - Can't connect to the router {}".format(errr, hostname)
+        print msg
+        sendMsg = "m:" + msg + "\n"
+        sc.sendall(sendMsg)
         return False
     except:
-        print "Lost connection to {}".format(hostname)
+        msg = "Lost connection to {}".format(hostname)
+        print msg
+        sendMsg = "m:" + msg + "\n"
+        sc.sendall(sendMsg)
 
 
 # Gets dev object and performs an upgrade
@@ -52,22 +67,34 @@ def upgrade(device, hhh):
     sw = SW(device)
     try:
         sw._multi_RE = False
-        print "Installing a Junos on {}, please wait".format(hhh)
+        msg = "Installing a Junos on {}, please wait".format(hhh)
+        print msg
+        sendMsg = "m:" + msg + "\n"
+        sc.sendall(sendMsg)
         ok = sw.install(package=dict_2[hhh], no_copy=True, remote_path='/var/home/JUNOS-RW/', progress='update_progress',
                         validate=False)
     except Exception as err:
-        print "Can't install software on {}".format(hhh)
+        msg = "Can't install software on {}".format(hhh)
+        print msg
+        sendMsg = "m:" + msg + "\n"
+        sc.sendall(sendMsg)
         print err
         device.close()
         sys.exit(0)
 
     if ok is True:
-        print "Rebooting after an upgrade {}".format(hhh)
+        msg = "Rebooting after an upgrade {}".format(hhh)
+        print msg
+        sendMsg = "m:" + msg + "\n"
+        sc.sendall(sendMsg)
         rsp = sw.reboot()
         device.close()
         sys.exit(0)
     else:
-        print "Junos is not installed - {}".format(hhh)
+        msg = "Junos is not installed - {}".format(hhh)
+        print msg
+        sendMsg = "m:" + msg + "\n"
+        sc.sendall(sendMsg)
         device.close()
         sys.exit(0)
 
@@ -127,6 +154,7 @@ def passwordView(sc):
     print 'The incoming message says', repr(password1)
 
     # do something with username and password, including error handling
+    sc.sendall("loggedIn\n")
 
     # Get Router : Config-File dictionary from iPad
     dictString = recv_all(sc)
@@ -143,10 +171,14 @@ def passwordView(sc):
     pool.map(connect, list)
     pool.close()
     pool.join()
-    print "All routers are upgraded"
+    time.sleep(1)
+    msg = "All routers are upgraded"
+    print msg
+    sendMsg = "end:" + msg + "\n"
+    sc.sendall(sendMsg)
 
 
-    sc.sendall("loggedIn\n")
+    
     sc.close()
     print 'Reply sent, socket closed'
 
@@ -156,7 +188,7 @@ def selectLab(sc):
     check = recv_all(sc)
 
     # Navigate to "junos" folder and run ls
-    path = "/Users/dbalyura/Downloads/Junos"
+    path = "/Users/larao/Documents/routerConfiguration/junos"
     os.chdir(path)
     ls = subprocess.check_output(["ls"])
     print ls
@@ -178,6 +210,7 @@ if __name__ == "__main__":
 
     # Script runs on a loop receiving messages indicating which app screen the user selects
     while True:
+        global sc
         sc, sockname = s.accept()
         print 'We have accepted a connection from', sockname
         print 'Socket connects', sc.getsockname(), 'and', sc.getpeername()

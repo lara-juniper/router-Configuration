@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfigReportViewController: UITableViewController {
+class ConfigReportViewController: UITableViewController, dataDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +18,10 @@ class ConfigReportViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        connection.sendDelegate = self
+        
+        let doneButton = UIBarButtonItem(title: "Home", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.startOver))
+        navigationItem.rightBarButtonItem = doneButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,11 +30,13 @@ class ConfigReportViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = "Routers Successfully Configured"
+        navigationItem.title = "Tracking Installation Progress"
     }
     
     //MARK: Custom objects
     var routerDict = [String:String]()
+    var messageVec = [String]()
+    var connection = Connection()
     
 
     // MARK: - Table view data source
@@ -42,10 +48,10 @@ class ConfigReportViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return routerDict.count
+        return messageVec.count
     }
 
-
+/*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ConfigCell", for: indexPath) as? ConfigCell
             else {
@@ -59,42 +65,39 @@ class ConfigReportViewController: UITableViewController {
         
         return cell
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+*/
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell! else {
+            fatalError("The dequeued cell is not an instance of UITableViewCell.")
+        }
+        cell.textLabel?.text = messageVec[indexPath.row]
+        
+        return cell
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    //function executes every time data flows from Python --> iPad
+    func send(str: String) {
+        processInputString(str: str)
     }
-    */
+    
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    func processInputString(str: String) {
+        let strVec = str.components(separatedBy: "\n")
+        let strVec2 = strVec[0].components(separatedBy: ":")
+        if strVec2[0] == "m" {
+            messageVec.append(strVec2[1])
+            tableView.reloadData()
+        } else if strVec2[0] == "end" {
+            messageVec.append(strVec2[1])
+            tableView.reloadData()
+            print(messageVec)
+        }
+        
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func startOver() {
+        performSegue(withIdentifier: "goHome", sender: nil)
     }
-    */
 
     /*
     // MARK: - Navigation

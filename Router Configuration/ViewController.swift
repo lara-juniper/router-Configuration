@@ -30,6 +30,9 @@ class ViewController: UIViewController, dataDelegate {
                 notConnected = false
             }
         }
+        
+        let doneButton = UIBarButtonItem(title: "Enter", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.pressEnter))
+        navigationItem.rightBarButtonItem = doneButton
 
     }
     
@@ -56,13 +59,16 @@ class ViewController: UIViewController, dataDelegate {
     
     //MARK: Actions
 
-    @IBAction func pressEnter(_ sender: Any) {
+
+    
+    func pressEnter() {
         sendMessageToPython(str: "\(usernameTextField.text!)\n")
         sendMessageToPython(str: "\(passwordTextField.text!)\n")
         
         let dictString = dictToString(dict: routerDict)
         sleep(1)
         sendMessageToPython(str: dictString)
+    
     }
     
     //MARK: Functions
@@ -123,6 +129,7 @@ class ViewController: UIViewController, dataDelegate {
         if (segue.identifier == "LastSegue") {
             let secondViewController = segue.destination as! ConfigReportViewController
             secondViewController.routerDict = routerDict
+            secondViewController.connection = connection
             
         }
     }
