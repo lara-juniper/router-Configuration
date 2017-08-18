@@ -80,11 +80,104 @@
                         <outlet property="passwordTextField" destination="mpT-I2-7wm" id="sWf-fB-Cht"/>
                         <outlet property="usernameTextField" destination="buT-je-nyL" id="9to-dz-yYj"/>
                         <segue destination="RKD-Yj-ccL" kind="show" identifier="LastSegue" id="tnC-OT-DVN"/>
+                        <segue destination="ULG-Pd-AoC" kind="show" identifier="loginToConfigCommands" id="sco-LN-Dbe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4900" y="35.532233883058474"/>
+        </scene>
+        <!--Config Commands View Controller-->
+        <scene sceneID="jTM-JB-8NL">
+            <objects>
+                <viewController id="ULG-Pd-AoC" customClass="ConfigCommandsViewController" customModule="Router_Configuration" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zia-Eu-JS6"/>
+                        <viewControllerLayoutGuide type="bottom" id="pdR-bt-KWt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wmB-Ry-M54">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEj-rX-KmX">
+                                <rect key="frame" x="126" y="70" width="123" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Show Version"/>
+                                <connections>
+                                    <action selector="showVersionPress:" destination="ULG-Pd-AoC" eventType="touchUpInside" id="WAm-0N-Zom"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAw-LF-ZZ9">
+                                <rect key="frame" x="78.5" y="156" width="218" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Show Chassis Hardware"/>
+                                <connections>
+                                    <action selector="showChassisHWPress:" destination="ULG-Pd-AoC" eventType="touchUpInside" id="0oi-cg-dw8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8b-GQ-y0k">
+                                <rect key="frame" x="54" y="242" width="267" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Show Chassis Routing Engine"/>
+                                <connections>
+                                    <action selector="showChassisREPress:" destination="ULG-Pd-AoC" eventType="touchUpInside" id="RNO-AI-sKu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GAw-LF-ZZ9" firstAttribute="centerX" secondItem="wmB-Ry-M54" secondAttribute="centerX" id="L79-SX-BSf"/>
+                            <constraint firstItem="lEj-rX-KmX" firstAttribute="top" secondItem="zia-Eu-JS6" secondAttribute="bottom" constant="50" id="OVf-xO-cOW"/>
+                            <constraint firstItem="L8b-GQ-y0k" firstAttribute="top" secondItem="GAw-LF-ZZ9" secondAttribute="bottom" constant="50" id="XTh-rr-2e9"/>
+                            <constraint firstItem="L8b-GQ-y0k" firstAttribute="centerX" secondItem="wmB-Ry-M54" secondAttribute="centerX" id="d6S-89-klq"/>
+                            <constraint firstItem="GAw-LF-ZZ9" firstAttribute="top" secondItem="lEj-rX-KmX" secondAttribute="bottom" constant="50" id="j5P-w8-NVq"/>
+                            <constraint firstItem="lEj-rX-KmX" firstAttribute="centerX" secondItem="wmB-Ry-M54" secondAttribute="centerX" id="v8e-I2-lpp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="ehr-Cd-NjC" kind="show" identifier="configCommandsToReport" id="sTj-1n-IKW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="grE-5d-rzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4900" y="813"/>
+        </scene>
+        <!--Show Config Report View Controller-->
+        <scene sceneID="PyU-57-ilN">
+            <objects>
+                <viewController id="ehr-Cd-NjC" customClass="ShowConfigReportViewController" customModule="Router_Configuration" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VcU-Nb-81u"/>
+                        <viewControllerLayoutGuide type="bottom" id="vBn-kR-IYO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pul-Cy-Mhc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fkH-kr-6Lg">
+                                <rect key="frame" x="36" y="114" width="303" height="503"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="fkH-kr-6Lg" secondAttribute="trailing" constant="20" id="1Wv-8P-fjZ"/>
+                            <constraint firstItem="fkH-kr-6Lg" firstAttribute="leading" secondItem="pul-Cy-Mhc" secondAttribute="leadingMargin" constant="20" id="8WK-zX-53w"/>
+                            <constraint firstItem="vBn-kR-IYO" firstAttribute="top" secondItem="fkH-kr-6Lg" secondAttribute="bottom" constant="50" id="Ypf-JW-XpL"/>
+                            <constraint firstItem="fkH-kr-6Lg" firstAttribute="top" secondItem="VcU-Nb-81u" secondAttribute="bottom" constant="50" id="u42-Uu-Ybp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="fkH-kr-6Lg" id="Ypu-Af-Sfo"/>
+                        <segue destination="9Ot-la-cW5" kind="show" identifier="returnHome" id="D0h-Rg-AXS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gjn-qY-HRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5661.6000000000004" y="809.14542728635683"/>
         </scene>
         <!--Config Report View Controller-->
         <scene sceneID="qPC-uv-OFZ">
@@ -152,6 +245,9 @@
                                                 <rect key="frame" x="0.0" y="108" width="306" height="54"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                 <state key="normal" title="Show Configuration"/>
+                                                <connections>
+                                                    <action selector="showConfigButtonPress:" destination="9Ot-la-cW5" eventType="touchUpInside" id="Ez1-4T-NUM"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -303,11 +399,75 @@
                         <outlet property="IP4" destination="EqW-WV-rG4" id="03Z-z6-B5g"/>
                         <outlet property="Port" destination="IEd-he-m0X" id="f8T-oE-B6Y"/>
                         <segue destination="cE9-gs-MfK" kind="show" identifier="tcpToLab" id="G1d-ki-8wc"/>
+                        <segue destination="Frn-6A-jiu" kind="show" identifier="tcpToShowConfig" id="KKH-xX-rH6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSk-75-Q8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2626" y="36"/>
+        </scene>
+        <!--Show Config View Controller-->
+        <scene sceneID="oue-tk-JFw">
+            <objects>
+                <tableViewController id="Frn-6A-jiu" customClass="ShowConfigViewController" customModule="Router_Configuration" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bdW-gn-Yqj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="wwN-uI-Nkl">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wwN-uI-Nkl" id="AyY-sw-6sJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Frn-6A-jiu" id="eJM-Oe-6Uo"/>
+                            <outlet property="delegate" destination="Frn-6A-jiu" id="8SD-I1-ltQ"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showConfigToLogin" id="wa4-Qk-9RU"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pNx-e8-KIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2625" y="784"/>
+        </scene>
+        <!--Router Command Select View Controller-->
+        <scene sceneID="7UJ-oB-f3Y">
+            <objects>
+                <viewController id="rPe-Vo-14D" customClass="RouterCommandSelectViewController" customModule="Router_Configuration" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uw2-gM-01D"/>
+                        <viewControllerLayoutGuide type="bottom" id="udp-1D-VlU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6tg-a7-rI2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x70-XQ-Af6">
+                                <rect key="frame" x="0.0" y="100" width="99" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bXd-op-kQX">
+                                <rect key="frame" x="107" y="100" width="268" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="commandPicker" destination="bXd-op-kQX" id="XLV-ZA-eXZ"/>
+                        <outlet property="routerPicker" destination="x70-XQ-Af6" id="rGh-2h-TDv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a6U-lD-zYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2621.5999999999999" y="1465.8170914542729"/>
         </scene>
         <!--Lab Select View Controller-->
         <scene sceneID="wic-A0-lS9">
@@ -441,6 +601,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6lf-Je-bph"/>
+        <segue reference="bhn-uc-0DL"/>
+        <segue reference="wa4-Qk-9RU"/>
     </inferredMetricsTieBreakers>
 </document>

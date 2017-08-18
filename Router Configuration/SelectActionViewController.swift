@@ -8,13 +8,15 @@
 
 import UIKit
 
+var firstCommand = ""
+
 class SelectActionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         operationButton.isEnabled = false
-        showConfigButton.isEnabled = false
+        //showConfigButton.isEnabled = false
         
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
@@ -28,9 +30,17 @@ class SelectActionViewController: UIViewController {
     
     @IBAction func upgradeVersionButtonPress(_ sender: Any) {
         
+        firstCommand = "Upgrade Version"
         performSegue(withIdentifier: "ActionToTCP", sender: nil)
+        
     }
     
+    @IBAction func showConfigButtonPress(_ sender: Any) {
+        
+        firstCommand = "Show Configuration"
+        performSegue(withIdentifier: "ActionToTCP", sender: nil)
+        
+    }
     
     
     //MARK: Outlets

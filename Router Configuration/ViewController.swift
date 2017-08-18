@@ -51,6 +51,8 @@ class ViewController: UIViewController, dataDelegate {
     
     var routerDict = [String:String]()
     
+    var selectedRouter: String? = nil
+    
     //MARK: Outlets
     
     @IBOutlet weak var usernameTextField: UITextField!
@@ -85,7 +87,11 @@ class ViewController: UIViewController, dataDelegate {
         let strVec = str.components(separatedBy: "\n")
         if (strVec[0] == "loggedIn") && (firstTime) {
             firstTime = false
-            performSegue(withIdentifier: "LastSegue", sender: nil)
+            if firstCommand == "Show Configuration" {
+                performSegue(withIdentifier: "loginToConfigCommands", sender: nil)
+            } else {
+                performSegue(withIdentifier: "LastSegue", sender: nil)
+            }
             
         }
     }
@@ -113,6 +119,8 @@ class ViewController: UIViewController, dataDelegate {
                 str += dict[components[i]]!
                 str += "',"
             }
+        } else if components.count < 1 {
+            return "{}\n"
         }
         str += "'"
         str += components[dict.count - 1]
@@ -131,6 +139,12 @@ class ViewController: UIViewController, dataDelegate {
             secondViewController.routerDict = routerDict
             secondViewController.connection = connection
             
+        } else if (segue.identifier == "loginToConfigCommands") {
+            let secondViewController = segue.destination as! ConfigCommandsViewController
+            guard let router = self.selectedRouter else {
+                fatalError("No router selected")
+            }
+            secondViewController.selectedRouter = router
         }
     }
     

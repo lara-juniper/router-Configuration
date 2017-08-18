@@ -138,7 +138,22 @@ def execute1(dict_swift, user1, password1):
         print dict_2
     return list, dict_2
 
+def show_ver(host_ver):
+    dev = Device(host="{}".format(all_routers[host_ver]), user=username1, passwd=password1)
+    dev.open()
+    dev.timeout = 3000
+    print_ver = dev.cli("show version", format='text', warning=False)
+    msg = print_ver + '\n'
+    sc.sendall(msg)
 
+
+def show_chassis_hw(host_ver):
+    dev = Device(host="{}".format(all_routers[host_ver]), user=username1, passwd=password1)
+    dev.open()
+    dev.timeout = 3000
+    print_ver = dev.cli("show chassis hardware", format='text', warning=False)
+    msg = print_ver + '\n'
+    sc.sendall(msg)
 
 
 # Function that runs when application reaches the "Enter Login Credentials" screen
@@ -182,6 +197,18 @@ def passwordView(sc):
     sc.close()
     print 'Reply sent, socket closed'
 
+def configReport(sc):
+    cmd = recv_all(sc)
+    print 'received message: ' + cmd
+    split = cmd.split(":")
+    router = split[0]
+    command = split[1]
+    if command == "version":
+        show_ver(router)
+    elif command == "chassisHW":
+        show_chassis_hw(router)
+
+
 
 # Function executes when you are on the "Select Lab" screen
 def selectLab(sc):
@@ -224,6 +251,8 @@ if __name__ == "__main__":
                 passwordView(sc)
             elif message == "lab":
                 selectLab(sc)
+            elif message == "configReport":
+                configReport(sc)
 
     '''
     pool_num, list = printing()

@@ -71,7 +71,13 @@ class TCPSetupViewController: UIViewController {
         serverAddress = makeIPAddress(ip1: ip1, ip2: ip2, ip3: ip3, ip4: ip4)
         serverPort = portInt32
         print ("your IP address is \(serverAddress) and port number is \(serverPort)")
-        performSegue(withIdentifier: "tcpToLab", sender: nil)
+        
+        if firstCommand == "Show Configuration" {
+            performSegue(withIdentifier: "tcpToShowConfig", sender: nil)
+        } else {
+            performSegue(withIdentifier: "tcpToLab", sender: nil)
+        }
+        
         
     }
     
