@@ -69,8 +69,9 @@ class ShowConfigReportViewController: UIViewController, dataDelegate {
         var notConnected = true
         while notConnected {
             if connection.outputStream.hasSpaceAvailable {
+                sleep(2)
                 let strToSend = "\(selectedRouter):\(messageToPython)\n"
-                sendMessageToPython(str: strToSend)
+                self.sendMessageToPython(str: strToSend)
                 notConnected = false
             }
         }
@@ -86,7 +87,7 @@ class ShowConfigReportViewController: UIViewController, dataDelegate {
         arrayToServer = Array(str.utf8)
         if connection.outputStream.hasSpaceAvailable { //If there is space available on the output stream (i.e. you're not sending too much data at once)
             let bytes = connection.outputStream.write(&arrayToServer, maxLength: arrayToServer.count) //write message to output stream
-            print("\(bytes) bytes were sent to Python") //print how many bytes of data were sent
+            print("\(bytes) were sent to Python") //print how many bytes of data were sent
         } else { //error if you're trying to send too much data
             print("Error: no space available for writing")
         }

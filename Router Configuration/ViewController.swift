@@ -52,6 +52,7 @@ class ViewController: UIViewController, dataDelegate {
     var routerDict = [String:String]()
     
     var selectedRouter: String? = nil
+    var command: String = ""
     
     //MARK: Outlets
     
@@ -140,11 +141,12 @@ class ViewController: UIViewController, dataDelegate {
             secondViewController.connection = connection
             
         } else if (segue.identifier == "loginToConfigCommands") {
-            let secondViewController = segue.destination as! ConfigCommandsViewController
+            let secondViewController = segue.destination as! ShowConfigReportViewController
             guard let router = self.selectedRouter else {
                 fatalError("No router selected")
             }
             secondViewController.selectedRouter = router
+            secondViewController.messageToPython = command
         }
     }
     

@@ -27,8 +27,8 @@
 		AFA4EA4E1F46375500A1AFF2 /* ConfigCommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4EA4D1F46375500A1AFF2 /* ConfigCommandsViewController.swift */; };
 		AFA4EA501F4637BF00A1AFF2 /* ShowConfigReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4EA4F1F4637BF00A1AFF2 /* ShowConfigReportViewController.swift */; };
 		AFA4EA521F47816200A1AFF2 /* RouterCommandSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4EA511F47816200A1AFF2 /* RouterCommandSelectViewController.swift */; };
-		AFEB523C1F29418C00FBAA0C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB523B1F29418C00FBAA0C /* TableViewController.swift */; };
-		AFEB523E1F29419F00FBAA0C /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB523D1F29419F00FBAA0C /* PickerCell.swift */; };
+		AFA4EA541F47A30200A1AFF2 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4EA531F47A30200A1AFF2 /* PickerCell.swift */; };
+		AFA4EA561F47A30C00A1AFF2 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4EA551F47A30C00A1AFF2 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +75,8 @@
 		AFA4EA4D1F46375500A1AFF2 /* ConfigCommandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigCommandsViewController.swift; sourceTree = "<group>"; };
 		AFA4EA4F1F4637BF00A1AFF2 /* ShowConfigReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowConfigReportViewController.swift; sourceTree = "<group>"; };
 		AFA4EA511F47816200A1AFF2 /* RouterCommandSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCommandSelectViewController.swift; sourceTree = "<group>"; };
-		AFEB523B1F29418C00FBAA0C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../../tableTesting2/tableTesting2/TableViewController.swift; sourceTree = "<group>"; };
-		AFEB523D1F29419F00FBAA0C /* PickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerCell.swift; path = ../../tableTesting2/tableTesting2/PickerCell.swift; sourceTree = "<group>"; };
+		AFA4EA531F47A30200A1AFF2 /* PickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerCell.swift; path = "Router Configuration/PickerCell.swift"; sourceTree = "<group>"; };
+		AFA4EA551F47A30C00A1AFF2 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = "Router Configuration/TableViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +125,8 @@
 		AF64FFE11F1ED2C200F5CF25 = {
 			isa = PBXGroup;
 			children = (
+				AFA4EA551F47A30C00A1AFF2 /* TableViewController.swift */,
+				AFA4EA531F47A30200A1AFF2 /* PickerCell.swift */,
 				AF64FFEC1F1ED2C200F5CF25 /* Router Configuration */,
 				AF6400011F1ED2C200F5CF25 /* Router ConfigurationTests */,
 				AF64000C1F1ED2C300F5CF25 /* Router ConfigurationUITests */,
@@ -155,10 +157,8 @@
 				AFA4EA4D1F46375500A1AFF2 /* ConfigCommandsViewController.swift */,
 				AFA4EA4B1F4636DA00A1AFF2 /* ShowConfigViewController.swift */,
 				AFA4EA431F3E0F6B00A1AFF2 /* ConfigReportViewController.swift */,
-				AFEB523D1F29419F00FBAA0C /* PickerCell.swift */,
 				AFA4EA451F3E16DE00A1AFF2 /* ConfigCell.swift */,
 				AF9408C31F200352005775F6 /* LabSelectViewController.swift */,
-				AFEB523B1F29418C00FBAA0C /* TableViewController.swift */,
 				AF9408C51F20213D005775F6 /* SelectRoutersViewController.swift */,
 				AF9408C91F27BAE2005775F6 /* SelectJunosFileViewController.swift */,
 				AF9408C71F2186BB005775F6 /* Router.swift */,
@@ -315,6 +315,7 @@
 			files = (
 				AFA4EA441F3E0F6B00A1AFF2 /* ConfigReportViewController.swift in Sources */,
 				AFA4EA501F4637BF00A1AFF2 /* ShowConfigReportViewController.swift in Sources */,
+				AFA4EA561F47A30C00A1AFF2 /* TableViewController.swift in Sources */,
 				AFA4EA4E1F46375500A1AFF2 /* ConfigCommandsViewController.swift in Sources */,
 				AF64001E1F1FCA1A00F5CF25 /* SelectActionViewController.swift in Sources */,
 				AF64FFF01F1ED2C200F5CF25 /* ViewController.swift in Sources */,
@@ -322,14 +323,13 @@
 				AF9408C81F2186BB005775F6 /* Router.swift in Sources */,
 				AFA4EA521F47816200A1AFF2 /* RouterCommandSelectViewController.swift in Sources */,
 				AF9408CA1F27BAE2005775F6 /* SelectJunosFileViewController.swift in Sources */,
+				AFA4EA541F47A30200A1AFF2 /* PickerCell.swift in Sources */,
 				AF9408C61F20213D005775F6 /* SelectRoutersViewController.swift in Sources */,
 				AF9408C41F200352005775F6 /* LabSelectViewController.swift in Sources */,
-				AFEB523C1F29418C00FBAA0C /* TableViewController.swift in Sources */,
 				AFA4EA461F3E16DE00A1AFF2 /* ConfigCell.swift in Sources */,
 				AFA4EA481F44C26000A1AFF2 /* TCPSetupViewController.swift in Sources */,
 				AFA4EA4C1F4636DA00A1AFF2 /* ShowConfigViewController.swift in Sources */,
 				AF64FFEE1F1ED2C200F5CF25 /* AppDelegate.swift in Sources */,
-				AFEB523E1F29419F00FBAA0C /* PickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

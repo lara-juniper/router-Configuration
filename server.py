@@ -139,6 +139,7 @@ def execute1(dict_swift, user1, password1):
     return list, dict_2
 
 def show_ver(host_ver):
+    print("********")
     dev = Device(host="{}".format(all_routers[host_ver]), user=username1, passwd=password1)
     dev.open()
     dev.timeout = 3000
@@ -198,14 +199,15 @@ def passwordView(sc):
     print 'Reply sent, socket closed'
 
 def configReport(sc):
+    print "*********************"
     cmd = recv_all(sc)
     print 'received message: ' + cmd
     split = cmd.split(":")
     router = split[0]
     command = split[1]
-    if command == "version":
+    if command == "Show Version":
         show_ver(router)
-    elif command == "chassisHW":
+    elif command == "Show Chassis Hardware":
         show_chassis_hw(router)
 
 
